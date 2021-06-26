@@ -19,7 +19,7 @@ export  const ButtonSearch = styled.button`
   border: 1px solid black;
   border-radius: 5px;
   padding: 5px 15px;
-  
+  float:right;
   `;
 export  const StyledDiv = styled.div`
    

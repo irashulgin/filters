@@ -169,18 +169,35 @@ function Filter() {
     newList[index]["operator"] = "";
     newList[index]["value"] = [];
   }
-
+/**
+ * 
+ * @param {string[]} values 
+ * @param {string} value 
+ * @param {string} field 
+ */
   function updateFieldPerValue(values, value, field) {
     if (values.includes(value)) {
       addField(field);
     }
   }
+  /**
+   * 
+   * @param {string} values 
+   * @param {string} value 
+   * @param {string} field 
+   * @param {string} previous 
+   */
   function removeFieldPerValue(values, value, field, previous) {
     if (previous.includes(value) && !values.includes(value)) {
       removeFromFields(field);
       removeFromQuery(field);
     }
   }
+  /**
+   * 
+   * @param {string} values 
+   * @param {string} previous 
+   */
   function changeValues(values, previous) {
     updateFieldPerValue(values, "Bug", "State");
     updateFieldPerValue(values, "Backlog", "ID");
@@ -231,8 +248,6 @@ function Filter() {
       addField("Team");
     }
   }
-
-  debugger;
   /**
    * Save query to localstorage
    */
@@ -266,9 +281,9 @@ function Filter() {
           <Button onClick={addLine}>+ Add Criteria</Button>
         )}
       </StyledDiv>
-      <StyledDivSearch>
+      <StyledDiv>
         <ButtonSearch onClick={search}>Search</ButtonSearch>
-      </StyledDivSearch>
+      </StyledDiv>
     </Style>
   );
 }
