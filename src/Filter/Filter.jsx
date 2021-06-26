@@ -3,11 +3,11 @@ import { useState } from "react";
 import { fieldType, getAbsentValues } from "../consts";
 import {
   Style,
-  StyledDivSearch,
   Button,
   ButtonSearch,
   StyledDiv,
 } from "./FilterStyle";
+import { notification } from 'antd';
 
 function Filter() {
   //Set query list from local storage
@@ -35,6 +35,14 @@ function Filter() {
       return fList;
     });
   }
+  const openNotificationWithIcon = (type,content) => {
+    notification[type]({
+      message: '',
+      description:
+        `${content}`,
+    });
+  };
+  
   /**
    * Delete line
    * @param {event} event
@@ -42,7 +50,7 @@ function Filter() {
    */
   const deleteItem = (event, index) => {
     if (queryList.length < 2) {
-      window.alert("You can not remove the last line");
+      openNotificationWithIcon("warning","You can not remove the last line");
       return;
     }
     setQueryList((list) => {
@@ -253,10 +261,10 @@ function Filter() {
    */
   const search = () => {
     setQueryList((list) => {
-      localStorage.setItem("query", JSON.stringify(list));
-      alert("The query has been saved!");
+      localStorage.setItem("query", JSON.stringify(list)); 
       return list;
     });
+    openNotificationWithIcon("success","The query has been saved!");
   };
 
   return (

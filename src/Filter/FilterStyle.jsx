@@ -22,9 +22,5 @@ export  const ButtonSearch = styled.button`
   float:right;
   `;
 export  const StyledDiv = styled.div`
-   
   width: 48em; `;
 
-export  const StyledDivSearch = styled.div`
-  align-self: flex-end;
-  width: 50em; `;
